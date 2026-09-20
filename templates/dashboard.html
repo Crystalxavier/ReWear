@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - ReWear</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        ReWear
+    </div>
+
+    <nav>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/browse">Browse Items</a>
+        <a href="#">My Items</a>
+        <a href="/logout">Logout</a>
+    </nav>
+
+</header>
+
+
+<main class="dashboard">
+
+    <div class="dashboard-heading">
+
+        <div>
+            <p class="small-title">MY DASHBOARD</p>
+
+            <h1>
+                Welcome back, {{ user_name }} 👋
+            </h1>
+
+            <p>
+                Manage your clothes, swaps and ReWear points.
+            </p>
+        </div>
+
+        <a href="/add-item" class="dashboard-add">
+            + List an Item
+        </a>
+
+    </div>
+
+
+    <!-- STAT CARDS -->
+
+    <div class="stats">
+
+        <div class="stat-card">
+
+            <div class="stat-icon">⭐</div>
+
+            <div>
+                <p>Available Points</p>
+                <h2>{{ points }}</h2>
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">👕</div>
+
+            <div>
+                <p>My Items</p>
+                <h2>{{ item_count }}</h2>
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">🔄</div>
+
+            <div>
+                <p>Ongoing Swaps</p>
+                <h2>0</h2>
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">✓</div>
+
+            <div>
+                <p>Completed Swaps</p>
+                <h2>0</h2>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- QUICK ACTIONS -->
+
+    <section class="dashboard-section">
+
+        <h2>Quick Actions</h2>
+
+        <div class="action-container">
+
+            <a href="/add-item" class="action-card">
+
+                <span>👕</span>
+
+                <div>
+                    <h3>List an Item</h3>
+                    <p>Give your unused clothes a new home.</p>
+                </div>
+
+            </a>
+
+
+            <a href="/browse" class="action-card">
+
+                <span>🔍</span>
+
+                <div>
+                    <h3>Browse Items</h3>
+                    <p>Discover clothes from your community.</p>
+                </div>
+
+            </a>
+
+
+            <a href="#" class="action-card">
+
+                <span>🔄</span>
+
+                <div>
+                    <h3>View Swaps</h3>
+                    <p>Check your ongoing exchanges.</p>
+                </div>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- MY ITEMS -->
+
+    <section class="dashboard-section">
+
+        <div class="section-heading">
+
+            <h2>My Recent Items</h2>
+
+            <a href="#">View All</a>
+
+        </div>
+
+
+        {% if items %}
+
+            <div class="item-grid">
+
+                {% for item in items %}
+
+                    <div class="item-card">
+
+                        <div class="item-image">
+
+                            {% if item.image %}
+
+                                <img src="{{ url_for('uploaded_file', filename=item.image) }}"
+                                alt="{{ item.title }}">
+
+                            {% else %}
+
+                                <span>👕</span>
+
+                            {% endif %}
+
+                        </div>
+
+                        <div class="item-info">
+
+                            <h3>{{ item.title }}</h3>
+
+                            <p>{{ item.category }}</p>
+
+                            <span class="status">
+                                {{ item.status }}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="empty-items">
+
+                <div>👚</div>
+
+                <h3>No items listed yet</h3>
+
+                <p>
+                    Start by listing clothes you no longer use.
+                </p>
+
+                <a href="#">
+                    + List Your First Item
+                </a>
+
+            </div>
+
+        {% endif %}
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 ReWear. Fashion that keeps going.
+    </p>
+
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Browse Items - ReWear</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        ReWear
+    </div>
+
+    <nav>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/browse">Browse Items</a>
+        <a href="#">My Items</a>
+        <a href="/logout">Logout</a>
+    </nav>
+
+</header>
+
+
+<main class="browse-page">
+
+    <div class="browse-heading">
+
+        <div>
+            <p class="small-title">
+                COMMUNITY CLOSET
+            </p>
+
+            <h1>
+                Browse Items 👕
+            </h1>
+
+            <p>
+                Discover clothes listed by the ReWear community.
+            </p>
+        </div>
+
+        <a href="/add-item" class="dashboard-add">
+            + List an Item
+        </a>
+
+    </div>
+
+
+    {% if items %}
+
+    <div class="item-grid">
+
+        {% for item in items %}
+
+        <div class="item-card">
+
+            <div class="item-image">
+
+                {% if item.image %}
+
+                <img
+                    src="{{ url_for('uploaded_file', filename=item.image) }}"
+                    alt="{{ item.title }}"
+                >
+
+                {% else %}
+
+                <span>👕</span>
+
+                {% endif %}
+
+            </div>
+
+
+            <div class="item-info">
+
+                <h3>
+                    {{ item.title }}
+                </h3>
+
+                <p>
+                    {{ item.category }}
+                    {% if item.size %}
+                    · Size {{ item.size }}
+                    {% endif %}
+                </p>
+
+                {% if item.condition_type %}
+                <p>
+                    Condition: {{ item.condition_type }}
+                </p>
+                {% endif %}
+
+                <div class="item-bottom">
+
+                    <span class="points">
+                        ⭐ {{ item.points }} points
+                    </span>
+
+                    <a
+                        href="/item/{{ item.id }}"
+                        class="view-btn"
+                    >
+                        View Details
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <div class="empty-items">
+
+        <div>👗</div>
+
+        <h3>
+            No items available yet
+        </h3>
+
+        <p>
+            Be the first person to list something!
+        </p>
+
+        <a href="/add-item">
+            + List an Item
+        </a>
+
+    </div>
+
+    {% endif %}
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 ReWear. Fashion that keeps going.
+    </p>
+
+</footer>
+
+</body>
+
+</html>

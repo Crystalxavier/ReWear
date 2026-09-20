@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>{{ item.title }} - ReWear</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        ReWear
+    </div>
+
+    <nav>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/browse">Browse Items</a>
+        <a href="#">My Items</a>
+        <a href="/logout">Logout</a>
+    </nav>
+
+</header>
+
+
+<main class="details-page">
+
+    <a href="/browse" class="back-link">
+        ← Back to Browse
+    </a>
+
+
+    <div class="details-card">
+
+
+        <!-- ITEM IMAGE -->
+
+        <div class="details-image">
+
+            <span>👕</span>
+
+        </div>
+
+
+        <!-- ITEM INFORMATION -->
+
+        <div class="details-info">
+
+            <p class="small-title">
+                {{ item.category }}
+            </p>
+
+            <h1>
+                {{ item.title }}
+            </h1>
+
+            <p class="seller">
+                Listed by {{ item.seller_name }}
+            </p>
+
+
+            <div class="details-line">
+                <strong>Size:</strong>
+                {{ item.size }}
+            </div>
+
+
+            <div class="details-line">
+                <strong>Condition:</strong>
+                {{ item.condition_type }}
+            </div>
+
+
+            <div class="details-line">
+                <strong>Type:</strong>
+                {{ item.clothing_type }}
+            </div>
+
+
+            <div class="description">
+
+                <h3>Description</h3>
+
+                <p>
+                    {{ item.description }}
+                </p>
+
+            </div>
+
+
+            <div class="points-box">
+
+                ⭐
+
+                <strong>
+                    {{ item.points }} Points
+                </strong>
+
+            </div>
+
+
+            <div class="details-actions">
+
+                <form action="/request-swap/{{ item.id }}" method="POST">
+
+                <button type="submit">
+                    🔄 Request Swap
+                </button>
+
+                </form>
+
+                <button type="button"
+                        class="secondary-button">
+                    ⭐ Redeem with Points
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 ReWear. Fashion that keeps going.
+    </p>
+
+</footer>
+
+</body>
+
+</html>

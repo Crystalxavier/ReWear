@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Swap Request Sent - ReWear</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        ReWear
+    </div>
+
+    <nav>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/browse">Browse Items</a>
+        <a href="/logout">Logout</a>
+    </nav>
+
+</header>
+
+
+<main class="success-page">
+
+    <div class="success-card">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h1>Swap Request Sent!</h1>
+
+        <p>
+            Your swap request has been sent successfully.
+        </p>
+
+        <p>
+            The item owner can now review your request.
+        </p>
+
+        <div class="success-buttons">
+
+            <a href="/browse">
+                Browse More Items
+            </a>
+
+            <a href="/dashboard">
+                Go to Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 ReWear. Fashion that keeps going.
+    </p>
+
+</footer>
+
+</body>
+
+</html>

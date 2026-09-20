@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>List an Item - ReWear</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        ReWear
+    </div>
+
+    <nav>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/browse">Browse Items</a>
+        <a href="/logout">Logout</a>
+    </nav>
+
+</header>
+
+
+<main class="add-item-page">
+
+    <div class="add-item-header">
+
+        <p class="small-title">SHARE & REUSE</p>
+
+        <h1>List a New Item</h1>
+
+        <p>
+            Give your unused clothing a second life.
+        </p>
+
+    </div>
+
+
+    <div class="form-container">
+
+        <form action="/add-item" method="POST"
+              enctype="multipart/form-data">
+
+
+            <!-- IMAGE -->
+
+            <div class="form-section">
+
+                <h2>Item Photo</h2>
+
+                <p class="form-help">
+                    Upload a clear photo of your clothing item.
+                </p>
+
+                <label class="upload-box">
+
+                    <span>📷</span>
+
+                    <strong>Choose an image</strong>
+
+                    <small>
+                        JPG, JPEG or PNG
+                    </small>
+
+                    <input
+                        type="file"
+                        name="image"
+                        accept=".jpg,.jpeg,.png"
+                        required
+                    >
+
+                </label>
+
+            </div>
+
+
+            <!-- BASIC INFORMATION -->
+
+            <div class="form-section">
+
+                <h2>Basic Information</h2>
+
+
+                <label>Item Title</label>
+
+                <input
+                    type="text"
+                    name="title"
+                    placeholder="Example: Blue Denim Jacket"
+                    required
+                >
+
+
+                <label>Description</label>
+
+                <textarea
+                    name="description"
+                    rows="5"
+                    placeholder="Describe the clothing item..."
+                    required
+                ></textarea>
+
+
+                <div class="form-row">
+
+                    <div>
+
+                        <label>Category</label>
+
+                        <select name="category" required>
+
+                            <option value="">
+                                Select category
+                            </option>
+
+                            <option value="Shirts">
+                                Shirts
+                            </option>
+
+                            <option value="T-Shirts">
+                                T-Shirts
+                            </option>
+
+                            <option value="Jeans">
+                                Jeans
+                            </option>
+
+                            <option value="Dresses">
+                                Dresses
+                            </option>
+
+                            <option value="Jackets">
+                                Jackets
+                            </option>
+
+                            <option value="Skirts">
+                                Skirts
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Type</label>
+
+                        <select name="clothing_type" required>
+
+                            <option value="">
+                                Select type
+                            </option>
+
+                            <option value="Men">
+                                Men
+                            </option>
+
+                            <option value="Women">
+                                Women
+                            </option>
+
+                            <option value="Unisex">
+                                Unisex
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div>
+
+                        <label>Size</label>
+
+                        <select name="size" required>
+
+                            <option value="">
+                                Select size
+                            </option>
+
+                            <option value="XS">XS</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Condition</label>
+
+                        <select name="condition_type" required>
+
+                            <option value="">
+                                Select condition
+                            </option>
+
+                            <option value="New">
+                                New
+                            </option>
+
+                            <option value="Like New">
+                                Like New
+                            </option>
+
+                            <option value="Good">
+                                Good
+                            </option>
+
+                            <option value="Used">
+                                Used
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <label>Tags</label>
+
+                <input
+                    type="text"
+                    name="tags"
+                    placeholder="Example: denim, casual, blue"
+                >
+
+            </div>
+
+
+            <!-- POINTS -->
+
+            <div class="form-section">
+
+                <h2>Redemption Points</h2>
+
+                <p class="form-help">
+                    Set how many points another user needs
+                    to redeem this item.
+                </p>
+
+                <input
+                    type="number"
+                    name="points"
+                    value="50"
+                    min="10"
+                    max="500"
+                    required
+                >
+
+            </div>
+
+
+            <button type="submit" class="submit-item">
+                List Item
+            </button>
+
+
+        </form>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 ReWear. Fashion that keeps going.
+    </p>
+
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Swap Requests - ReWear</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        ReWear
+    </div>
+
+    <nav>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/browse">Browse Items</a>
+        <a href="/swaps">Swap Requests</a>
+        <a href="/logout">Logout</a>
+    </nav>
+
+</header>
+
+
+<main class="swaps-page">
+
+    <div class="swaps-heading">
+
+        <div>
+
+            <p class="small-title">
+                SWAP ACTIVITY
+            </p>
+
+            <h1>
+                Swap Requests 🔄
+            </h1>
+
+            <p>
+                Review requests from people interested in your items.
+            </p>
+
+        </div>
+
+        <a href="/browse" class="dashboard-add">
+            Browse Items
+        </a>
+
+    </div>
+
+
+    {% if requests %}
+
+        <div class="swap-list">
+
+            {% for swap in requests %}
+
+                <div class="swap-card">
+
+                    <div class="swap-icon">
+                        👕
+                    </div>
+
+
+                    <div class="swap-details">
+
+                        <h2>
+                            {{ swap.title }}
+                        </h2>
+
+                        <p>
+                            Requested by
+                            <strong>
+                                {{ swap.requester_name }}
+                            </strong>
+                        </p>
+
+                        <p>
+                            ⭐ {{ swap.points }} points
+                        </p>
+
+                        <p>
+                            Request date:
+                            {{ swap.request_date }}
+                        </p>
+
+                    </div>
+
+
+                    <div class="swap-status">
+
+                        {% if swap.status == "pending" %}
+
+                            <span class="status pending">
+                                Pending
+                            </span>
+
+                        {% elif swap.status == "approved" %}
+
+                            <span class="status approved">
+                                Approved
+                            </span>
+
+                        {% elif swap.status == "rejected" %}
+
+                            <span class="status rejected">
+                                Rejected
+                            </span>
+
+                        {% else %}
+
+                            <span class="status">
+                                {{ swap.status }}
+                            </span>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div class="empty-swaps">
+
+            <div class="empty-icon">
+                🔄
+            </div>
+
+            <h2>
+                No swap requests yet
+            </h2>
+
+            <p>
+                Nobody has requested your items yet.
+            </p>
+
+            <a href="/browse">
+                Browse Items
+            </a>
+
+        </div>
+
+    {% endif %}
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 ReWear. Fashion that keeps going.
+    </p>
+
+</footer>
+
+</body>
+
+</html>

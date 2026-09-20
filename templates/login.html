@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - ReWear</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">
+            ReWear
+        </div>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/signup">Sign Up</a>
+        </nav>
+
+    </header>
+
+
+    <section class="auth-section">
+
+        <div class="auth-box">
+
+            <h1>Welcome Back</h1>
+
+            <p class="auth-subtitle">
+                Login to continue your sustainable fashion journey.
+            </p>
+
+            <form action="/login" method="POST">
+
+                <label>Email Address</label>
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+                <button type="submit">
+                    Login
+                </button>
+
+            </form>
+
+            <p class="account-link">
+                Don't have an account?
+                <a href="/signup">Create an account</a>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+
+        <p>
+            © 2026 ReWear. Fashion that keeps going.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
